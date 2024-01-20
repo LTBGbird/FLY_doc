@@ -1,4 +1,4 @@
-site_name: Flying Document
+site_name: 森韬L240自主无人机开发文档
 theme:
   name: material
 
@@ -12,7 +12,13 @@ markdown_extensions:
   - footnotes
   - md_in_html
   - toc:
-      permalink: true
+      toc_depth: 3 #目录深度，默认6，0则隐藏
+      title: On this page  #默认值，自动获取
+      permalink: true   #每个标题的末尾添加段落符号锚链接，默认false
+      permalink: ⚓︎  #每个标题的末尾添加自定义符号锚链接
+      permalink_title: Anchor link to this section for reference #在悬停时显示并由屏幕阅读器阅读的锚链接的标题
+      slugify: !!python/name:pymdownx.slugs.uslugify  #自定义 slug
+      slugify: !!python/name:pymdownx.slugs.uslugify_cased   #自定义 slug
 
   # Python Markdown Extensions
   - pymdownx.arithmatex:
@@ -35,3 +41,4 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
