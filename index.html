@@ -1,0 +1,731 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
+    
+    
+      
+        <title>森韬L240自主无人机开发文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#快速开始" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="森韬L240自主无人机开发文档" class="md-header__button md-logo" aria-label="森韬L240自主无人机开发文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            森韬L240自主无人机开发文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              快速开始
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="森韬L240自主无人机开发文档" class="md-nav__button md-logo" aria-label="森韬L240自主无人机开发文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    森韬L240自主无人机开发文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    快速开始
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    快速开始
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#准备工作" class="md-nav__link">
+    <span class="md-ellipsis">
+      准备工作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#自主飞行平台" class="md-nav__link">
+    <span class="md-ellipsis">
+      自主飞行平台
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#自行准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      自行准备
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#若第一次使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      若第一次使用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作手须知" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作手须知
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="操作手须知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#遥控器说明" class="md-nav__link">
+    <span class="md-ellipsis">
+      遥控器说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#在飞行时遇到紧急情况" class="md-nav__link">
+    <span class="md-ellipsis">
+      在飞行时遇到紧急情况？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#简单自主飞行部署" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单自主飞行部署
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#指定途径点轨迹规划" class="md-nav__link">
+    <span class="md-ellipsis">
+      指定途径点轨迹规划
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#准备工作" class="md-nav__link">
+    <span class="md-ellipsis">
+      准备工作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="准备工作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#自主飞行平台" class="md-nav__link">
+    <span class="md-ellipsis">
+      自主飞行平台
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#自行准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      自行准备
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#若第一次使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      若第一次使用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#操作手须知" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作手须知
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="操作手须知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#遥控器说明" class="md-nav__link">
+    <span class="md-ellipsis">
+      遥控器说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#在飞行时遇到紧急情况" class="md-nav__link">
+    <span class="md-ellipsis">
+      在飞行时遇到紧急情况？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#简单自主飞行部署" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单自主飞行部署
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#指定途径点轨迹规划" class="md-nav__link">
+    <span class="md-ellipsis">
+      指定途径点轨迹规划
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="快速开始">快速开始<a class="headerlink" href="#快速开始" title="Anchor link to this section for reference">⚓︎</a></h1>
+<h2 id="准备工作">准备工作<a class="headerlink" href="#准备工作" title="Anchor link to this section for reference">⚓︎</a></h2>
+<h3 id="自主飞行平台">自主飞行平台<a class="headerlink" href="#自主飞行平台" title="Anchor link to this section for reference">⚓︎</a></h3>
+<ul>
+<li>飞机本体 x 1</li>
+<li>满电4s电池 x 1</li>
+<li>mini-HDMI线 x 1</li>
+<li>显卡欺骗器 x 1</li>
+</ul>
+<h3 id="自行准备"><strong>自行准备</strong><a class="headerlink" href="#自行准备" title="Anchor link to this section for reference">⚓︎</a></h3>
+<ul>
+<li>路由器 x 1</li>
+<li>计算机（地面站） x 1</li>
+<li>显示器 x 1</li>
+<li>type-C 拓展坞 x 1</li>
+<li>鼠标 x 1</li>
+<li>键盘 x 1</li>
+</ul>
+<h3 id="若第一次使用">若第一次使用<a class="headerlink" href="#若第一次使用" title="Anchor link to this section for reference">⚓︎</a></h3>
+<ul>
+<li>提前在地面站上安装NoMachine （飞机上已经安装好，只需地面站上安装即可）<ul>
+<li>windows下载链接：<a href="https://downloads.nomachine.com/windows/?id=3">https://downloads.nomachine.com/windows/?id=3</a></li>
+<li>Linux下载链接：<a href="https://downloads.nomachine.com/linux/?id=1">https://downloads.nomachine.com/linux/?id=1</a></li>
+</ul>
+</li>
+<li>
+<p>若第一次使用，请先将飞机机载电脑连接至路由器</p>
+<ul>
+<li>先连接mini HDMI线至显示器，插入type-C拓展坞连接键盘和鼠标。</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled.png" /></p>
+<ul>
+<li>在ubuntu系统界面，将机载计算机连上路由器的WiFi，记录飞机设备ip。可以在终端输入指令查看ip</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ifconifg
+</code></pre></div>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%201.png" /></p>
+</li>
+</ul>
+<h2 id="操作手须知">操作手须知<a class="headerlink" href="#操作手须知" title="Anchor link to this section for reference">⚓︎</a></h2>
+<h3 id="遥控器说明">遥控器说明<a class="headerlink" href="#遥控器说明" title="Anchor link to this section for reference">⚓︎</a></h3>
+<aside>
+💡 遥控器须知务必仔细掌握，涉及应急处理。
+
+</aside>
+
+<aside>
+💡 部署飞行应有2人在场，1人操控地面站，1人手持遥控器，具有一定的四旋翼无人机飞行经验，应对可能的意外突发情况。
+
+</aside>
+
+<table>
+<thead>
+<tr>
+<th>7通道（第一优先级）</th>
+<th>上：电机使能    下：急停</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5通道（第二优先级）</td>
+<td>远离操作手端：遥控器手动控制姿态   靠近操作手端：接入px4_ctrl</td>
+</tr>
+<tr>
+<td>6通道（第三优先级）</td>
+<td>上：接入px4_ctrl遥控器控制位置    下：接入px4_ctrl跟踪轨迹</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%202.png" /></p>
+<h3 id="在飞行时遇到紧急情况">在飞行时遇到紧急情况？<a class="headerlink" href="#在飞行时遇到紧急情况" title="Anchor link to this section for reference">⚓︎</a></h3>
+<ul>
+<li>定位崩溃<ul>
+<li>体现在飞机姿态剧烈变化，严重失控</li>
+<li>处理措施：<strong>拨下7通道，紧急停桨。</strong></li>
+</ul>
+</li>
+<li>定位未崩溃，轨迹跟踪异常<ul>
+<li>体现在飞机姿态基本稳定，严重失控</li>
+<li>处理措施：<strong>6通道上拨，自稳停于原地，通过下拨油门杆，缓慢降低飞机高度。在合适较低高度处，油门保持最低位，拨下7通道，紧急停桨，然后终止所有程序。</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="简单自主飞行部署">简单自主飞行部署<a class="headerlink" href="#简单自主飞行部署" title="Anchor link to this section for reference">⚓︎</a></h2>
+<ul>
+<li>检查周围环境是否安全，如是否可能对行人、车辆造成安全隐患。禁止在可能造成安全隐患的场景进行飞行测试。</li>
+<li>将配套4s电池置于在飞机底座和电池基座之间，并用扎带固定牢固</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%203.png" /></p>
+<ul>
+<li>将飞机摆放在可以安全起飞的位置。为安全起见，机头朝前，机尾朝地面站。</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%204.png" /></p>
+<ul>
+<li>使用笔记本，将其连上相同路由器WiFi，通过NoMachine连接到飞机计算机的远程桌面。（用户名与密码即为nv）</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%205.png" /></p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%206.png" /></p>
+<ul>
+<li>将遥控器调整至自主起飞前对应档位<ul>
+<li>7通道：最上</li>
+<li>5通道：操作手端</li>
+<li>6通道：最下</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%202.png" /></p>
+<ul>
+<li>
+<p>打开Terminator，按 Alt+A 在所有窗口广播指令</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>pn_ws/ego_lidar_ws
+</code></pre></div>
+<p>进入自主飞行工作空间，输入指令</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>devel/setup.zsh
+</code></pre></div>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%207.png" /></p>
+</li>
+<li>
+<p>第一个终端启动mavros的ros节点，输入指令</p>
+<div class="highlight"><pre><span></span><code>px4_run
+</code></pre></div>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%208.png" /></p>
+<p>看到终端内有以下输出内容为正常启动px4</p>
+</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%209.png" /></p>
+<ul>
+<li>
+<p>第二个终端启动自主飞行的一系列程序，输入指令</p>
+<div class="highlight"><pre><span></span><code>ego_run
+</code></pre></div>
+</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2010.png" /></p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2011.png" /></p>
+<p>所有程序启动完毕大约用时大约15秒左右，</p>
+<ul>
+<li>
+<p>第三个终端启动可视化程序rviz，输入指令</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>visualize
+</code></pre></div>
+</li>
+</ul>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2012.png" /></p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2013.png" /></p>
+<ul>
+<li>
+<p>确定一切准备就绪：</p>
+<ul>
+<li>遥控器油门置于中位</li>
+<li>四周安全，不存在人身财产安全隐患</li>
+<li>可视化程序rviz中**可视化地图实时刷新**、<strong>飞机姿态现实正常</strong></li>
+</ul>
+</li>
+<li>
+<p>输入飞机起飞指令</p>
+<div class="highlight"><pre><span></span><code>takeoff
+</code></pre></div>
+<p>可见飞机自动起飞，悬停于约离地1.2m高度处。</p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2014.png" /></p>
+</li>
+<li>
+<p>在rviz中，使用3D Nav Goal在画面中设置目标点</p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2015.png" /></p>
+<p>在当前设置中，设置目标点仅获取 <span class="arithmatex">\((x,y)\)</span> 信息，不获取高度、偏航角信息。</p>
+</li>
+<li>
+<p>飞机根据当前所感知环境，进行实时在线自主规划，想目标的移动，红色轨迹为所规划轨迹。</p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2016.png" /></p>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2017.png" /></p>
+</li>
+<li>
+<p>在需要降落飞机时，在空闲终端输入降落指令</p>
+<div class="highlight"><pre><span></span><code>land
+</code></pre></div>
+<p>飞机自主下降，在降落到最低位置后，安全起见将7通道下拨，油门置于中位，使飞机电机下电。</p>
+<p><aside>
+💡 为安全起见，降落后下次起飞在急停模式下将所有程序Ctrl+C关闭干净，重新执行部署起飞流程：遥控器置于合适挡位→启动程序。</p>
+</aside>
+<p><img alt="Untitled" src="%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%20755b9fc10b75486098f3a3c132fc5822/Untitled%2018.png" /></p>
+</li>
+</ul>
+<h2 id="指定途径点轨迹规划">指定途径点轨迹规划<a class="headerlink" href="#指定途径点轨迹规划" title="Anchor link to this section for reference">⚓︎</a></h2>
+<aside>
+💡 请注意，世界坐标系原点位于飞机启动ego_run程序时位置，前 x 左 y 上 z 。
+
+</aside>
+
+<ul>
+<li>使用code打开 ~/pn_ws/lidar_ego_ws/src 文件夹</li>
+<li>编辑参数文件 ~/pn_ws/lidar_ego_ws/src/planner\plan_manage\launch\run_in_exp.launch</li>
+<li>修改位于39行参数 flight_type 为 2，使得使用全局途径点规划轨迹</li>
+<li>修改位于42行参数 point_num 为 期望经过途径点个数</li>
+<li>
+<p>依次修改对应途径点坐标</p>
+<div class="highlight"><pre><span></span><code>&lt;arg<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;point0_x&quot;</span><span class="w"> </span><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;16.0&quot;</span><span class="w"> </span>/&gt;
+&lt;arg<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;point0_y&quot;</span><span class="w"> </span><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;0.0&quot;</span><span class="w"> </span>/&gt;
+&lt;arg<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;point0_z&quot;</span><span class="w"> </span><span class="nv">value</span><span class="o">=</span><span class="s2">&quot;1.2&quot;</span><span class="w"> </span>/&gt;
+</code></pre></div>
+</li>
+<li>
+<p>起飞步骤和部署飞行部分相同，使用 Rviz 的 2D Nav Goal 任意选点触发规划执行。</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+    
+  </body>
+</html>
